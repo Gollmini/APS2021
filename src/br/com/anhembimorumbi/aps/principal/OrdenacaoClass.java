@@ -1,7 +1,8 @@
+package br.com.anhembimorumbi.aps.principal;
 
 public class OrdenacaoClass {
 
-	public int[] ordenacaoBublesort(int[] array) {
+	public static int[] ordenacaoBublesort(int[] array) {
 		int aux = 0;
 		for (int i = 0; i < array.length - 1; i++) {
 			for (int j = 0; j < array.length - 1; j++) {
@@ -15,7 +16,7 @@ public class OrdenacaoClass {
 		return array;
 	}
 
-	public static void ordenacaoSelectionSort(int[] array) {
+	public static int[] ordenacaoSelectionSort(int[] array) {
 		for (int i = 0; i < array.length; i++) {
 			int i_menor = i;
 			for (int j = i + 1; j < array.length; j++)
@@ -26,6 +27,7 @@ public class OrdenacaoClass {
 			array[i_menor] = aux;
 
 		}
+		return array;
 	}
 
 	public static int[] ordenacaoInsertionSort(int[] array) {
@@ -40,6 +42,10 @@ public class OrdenacaoClass {
 				j -= 1;
 			}
 		}
+		return array;
+	}
+
+	public static int[] ordenacaoQuickSort(int[] array) {
 		return array;
 	}
 
