@@ -5,28 +5,16 @@ public class Principal {
 
 	Scanner scanner = new Scanner(System.in);
 
-	public void geradorArrayAletorio(int tamanhoArray){
-				int [] array = new int[tamanhoArray];
+	public int[] geradorArrayAletorio(int tamanhoArray) {
+		int[] array = new int[tamanhoArray];
 
-				for(int i = 0 ; i < tamanhoArray ; i++){
-				//	array[i] = new Random().nextInt();
-					System.out.println(array[i]);
-				}
-				
-				long timeInicio = System.currentTimeMillis();
-				ordenacaoBublesort(array);
-				System.out.println("-------------------");
-				long timeFinal = System.currentTimeMillis();
-				
-				System.out.println("ini: " + timeInicio);
-				System.out.println("fim : " + timeFinal);
+		for (int i = 0; i < tamanhoArray; i++) {
+			array[i] = new Random().nextInt(50000);
+		}
+		return array;
+	}
 
-				for(int i = 0 ; i < tamanhoArray ; i++){
-					System.out.println(array[i]);
-				}
-			}
-
-	public void ordenacaoBublesort(int[] array) {
+	public int[] ordenacaoBublesort(int[] array) {
 		int aux = 0;
 		for (int i = 0; i < array.length - 1; i++) {
 			for (int j = 0; j < array.length - 1; j++) {
@@ -37,9 +25,10 @@ public class Principal {
 				}
 			}
 		}
+		return array;
 	}
 
-	public static void selectionSort(int[] v) {
+	public static void ordenacaoSelectionSort(int[] v) {
 		for (int i = 0; i < v.length; i++) {
 			int i_menor = i;
 			for (int j = i + 1; j < v.length; j++)
@@ -52,25 +41,41 @@ public class Principal {
 		}
 	}
 
-	public static void insertionSort(int[] values) {
-		for (int i = 1; i < values.length; i++) {
+	public static int[] ordenacaoInsertionSort(int[] arrayValues) {
+		for (int i = 1; i < arrayValues.length; i++) {
 
 			int j = i;
 
-			while (j > 0 && values[j] < values[j - 1]) {
-				int aux = values[j];
-				values[j] = values[j - 1];
-				values[j - 1] = aux;
+			while (j > 0 && arrayValues[j] < arrayValues[j - 1]) {
+				int aux = arrayValues[j];
+				arrayValues[j] = arrayValues[j - 1];
+				arrayValues[j - 1] = aux;
 				j -= 1;
 			}
+		}
+		return arrayValues;
+	}
 
+	public static void imprimirVetores(int[] array) {
+		for (int i = 0; i < array.length; i++) {
+			System.out.println(array[i]);
 		}
 	}
 
 	public static void main(String[] args) {
-		new Principal().geradorArrayAletorio(2);
+		final int array[] = new Principal().geradorArrayAletorio(5);
+
+		System.out.println("array orginal");
+		imprimirVetores(array);
+		
+		System.out.println("array bubleSort");
+		final int[] arrayOrdenadoBubleSort = new Principal().ordenacaoBublesort(array);
+		imprimirVetores(arrayOrdenadoBubleSort);
+		
+		System.out.println("array orginal");
+		imprimirVetores(array);
+		
+		final int[] arrayOrdenadoInsertSort = new Principal().ordenacaoInsertionSort(array);
 	}
 
 }
-
-
