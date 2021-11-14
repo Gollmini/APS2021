@@ -10,10 +10,15 @@ public class Principal {
 
 	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
-		final int array[] = new VetoresClass().geradorArrayAletorio(5);
+		final int array[] = new VetoresClass().geradorArrayAletorio(10000000);
 
 		System.out.println("array orginal");
 		new VetoresClass().imprimirVetores(array);
+		
+		System.out.println("array ordenado");
+		new OrdenacaoClass().ordenacaoHeapSort(array);
+		new VetoresClass().imprimirVetores(array);
+		
 
 	}
 

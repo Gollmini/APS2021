@@ -1,4 +1,5 @@
 package br.com.anhembimorumbi.aps.principal;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -17,7 +18,7 @@ public class VetoresClass {
 		int[] array = new int[tamanhoArray];
 
 		for (int i = 0; i < tamanhoArray; i++) {
-			array[i] = (int) Math.random() * tamanhoArray + 1;
+			array[i] =  new Random().nextInt(tamanhoArray);
 		}
 		return array;
 	}
