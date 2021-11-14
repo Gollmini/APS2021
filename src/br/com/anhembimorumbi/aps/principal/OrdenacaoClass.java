@@ -1,23 +1,19 @@
 package br.com.anhembimorumbi.aps.principal;
 
-
 /**
  * 
  * @author Roger Felisbino
- * @Descricao Ordenar todos os vetores através de cada 
- * um dos métodos de ordenação propostos e contar o 
- * número de comparações entre os elementos em cada 
- * ordenação realizada.
+ * @Descricao Ordenar todos os vetores através de cada um dos métodos de
+ *            ordenação propostos e contar o número de comparações entre os
+ *            elementos em cada ordenação realizada.
  *
  */
 
-
-
-/* Bubble Sort, Selection Sort, Insertion Sort, Heap Sort, 
-* Merge Sort, Quick Sort, Count Sort, Bucket Sort e Radix Sort 
-*/
+/*
+ * Bubble Sort, Selection Sort, Insertion Sort, Heap Sort, Merge Sort, Quick
+ * Sort, Count Sort, Bucket Sort e Radix Sort
+ */
 public class OrdenacaoClass {
-	
 
 	public static int[] ordenacaoBublesort(int[] array) {
 		int aux = 0;
@@ -65,31 +61,76 @@ public class OrdenacaoClass {
 	public static int[] ordenacaoQuickSort(int[] array) {
 		return array;
 	}
-	
-	  public static void ordenacaoHeapSort(int[] vetor){
-	        int tamanho = vetor.length;
-	        int i = tamanho / 2, pai, filho, t;
-	        while (true){
-	            if (i > 0){
-	                i--; t = vetor[i];
-	            }else{
-	                tamanho--;
-	                if (tamanho <= 0) {return;}
-	                t = vetor[tamanho];
-	                vetor[tamanho] = vetor[0];
-	            }
-	            pai = i;
-	            filho = ((i * 2) + 1);
-	            while (filho < tamanho){
-	                if ((filho + 1 < tamanho) && (vetor[filho + 1] > vetor[filho])) {filho++;}
-	                if (vetor[filho] > t){
-	                    vetor[pai] = vetor[filho];
-	                    pai = filho;
-	                    filho = pai * 2 + 1;
-	                }else {break;}
-	            }
-	            vetor[pai] = t;
-	        }
-	    }
+
+	public static void ordenacaoHeapSort(int[] vetor) {
+		int tamanho = vetor.length;
+		int i = tamanho / 2, pai, filho, t;
+		while (true) {
+			if (i > 0) {
+				i--;
+				t = vetor[i];
+			} else {
+				tamanho--;
+				if (tamanho <= 0) {
+					return;
+				}
+				t = vetor[tamanho];
+				vetor[tamanho] = vetor[0];
+			}
+			pai = i;
+			filho = ((i * 2) + 1);
+			while (filho < tamanho) {
+				if ((filho + 1 < tamanho) && (vetor[filho + 1] > vetor[filho])) {
+					filho++;
+				}
+				if (vetor[filho] > t) {
+					vetor[pai] = vetor[filho];
+					pai = filho;
+					filho = pai * 2 + 1;
+				} else {
+					break;
+				}
+			}
+			vetor[pai] = t;
+		}
+	}
+
+	public static void odenacaoMergeSort(int[] a, int n) {
+		if (n < 2) {
+			return;
+		}
+		int mid = n / 2;
+		int[] l = new int[mid];
+		int[] r = new int[n - mid];
+
+		for (int i = 0; i < mid; i++) {
+			l[i] = a[i];
+		}
+		for (int i = mid; i < n; i++) {
+			r[i - mid] = a[i];
+		}
+		odenacaoMergeSort(l, mid);
+		odenacaoMergeSort(r, n - mid);
+
+		odenacaoMerge(a, l, r, mid, n - mid);
+	}
+
+	public static void odenacaoMerge(int[] a, int[] l, int[] r, int left, int right) {
+
+		int i = 0, j = 0, k = 0;
+		while (i < left && j < right) {
+			if (l[i] <= r[j]) {
+				a[k++] = l[i++];
+			} else {
+				a[k++] = r[j++];
+			}
+		}
+		while (i < left) {
+			a[k++] = l[i++];
+		}
+		while (j < right) {
+			a[k++] = r[j++];
+		}
+	}
 
 }

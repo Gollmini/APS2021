@@ -16,7 +16,7 @@ public class Principal {
 		new VetoresClass().imprimirVetores(array);
 		
 		System.out.println("array ordenado");
-		new OrdenacaoClass().ordenacaoHeapSort(array);
+		new OrdenacaoClass().odenacaoMergeSort(array);
 		new VetoresClass().imprimirVetores(array);
 		
 
