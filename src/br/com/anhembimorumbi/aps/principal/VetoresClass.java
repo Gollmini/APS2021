@@ -1,6 +1,14 @@
 package br.com.anhembimorumbi.aps.principal;
 import java.util.Scanner;
 
+/**
+ * 
+ * @author Roger Felisbino
+ * @Descricao Gerar 50 vetores de inteiros aleatórios com cada um 
+ * dos seguintes tamanhos: 5, 10, 50, 100, 1.000 e 10.000.
+ *
+ */
+
 public class VetoresClass {
 
 	Scanner scanner = new Scanner(System.in);

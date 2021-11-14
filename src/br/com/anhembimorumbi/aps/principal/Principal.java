@@ -1,6 +1,10 @@
 package br.com.anhembimorumbi.aps.principal;
-import java.util.Random;
-import java.util.Scanner;
+
+/**
+ * 
+ * @author Roger Felisbino
+ * @Descricao:  Estudo comparativo entre os algoritmos de ordenação	
+ */
 
 public class Principal {
 
