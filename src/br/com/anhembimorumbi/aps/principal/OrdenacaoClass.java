@@ -1,5 +1,7 @@
 package br.com.anhembimorumbi.aps.principal;
 
+import java.util.Arrays;
+
 /**
  * 
  * @author Roger Felisbino
@@ -58,44 +60,41 @@ public class OrdenacaoClass {
 		return array;
 	}
 
-	public static int[] ordenacaoQuickSort(int[] array) {
-		return array;
-	}
-
-	public static void ordenacaoHeapSort(int[] vetor) {
-		int tamanho = vetor.length;
+	public static void ordenacaoHeapSort(int[] array) {
+		int tamanho = array.length;
 		int i = tamanho / 2, pai, filho, t;
 		while (true) {
 			if (i > 0) {
 				i--;
-				t = vetor[i];
+				t = array[i];
 			} else {
 				tamanho--;
 				if (tamanho <= 0) {
 					return;
 				}
-				t = vetor[tamanho];
-				vetor[tamanho] = vetor[0];
+				t = array[tamanho];
+				array[tamanho] = array[0];
 			}
 			pai = i;
 			filho = ((i * 2) + 1);
 			while (filho < tamanho) {
-				if ((filho + 1 < tamanho) && (vetor[filho + 1] > vetor[filho])) {
+				if ((filho + 1 < tamanho) && (array[filho + 1] > array[filho])) {
 					filho++;
 				}
-				if (vetor[filho] > t) {
-					vetor[pai] = vetor[filho];
+				if (array[filho] > t) {
+					array[pai] = array[filho];
 					pai = filho;
 					filho = pai * 2 + 1;
 				} else {
 					break;
 				}
 			}
-			vetor[pai] = t;
+			array[pai] = t;
 		}
 	}
 
-	public static void odenacaoMergeSort(int[] a, int n) {
+	public static void ordenacaoMergeSort(int[] array, int n) {
+
 		if (n < 2) {
 			return;
 		}
@@ -104,33 +103,109 @@ public class OrdenacaoClass {
 		int[] r = new int[n - mid];
 
 		for (int i = 0; i < mid; i++) {
-			l[i] = a[i];
+			l[i] = array[i];
 		}
 		for (int i = mid; i < n; i++) {
-			r[i - mid] = a[i];
+			r[i - mid] = array[i];
 		}
-		odenacaoMergeSort(l, mid);
-		odenacaoMergeSort(r, n - mid);
+		ordenacaoMergeSort(l, mid);
+		ordenacaoMergeSort(r, n - mid);
 
-		odenacaoMerge(a, l, r, mid, n - mid);
+		odenacaoMerge(array, l, r, mid, n - mid);
 	}
 
-	public static void odenacaoMerge(int[] a, int[] l, int[] r, int left, int right) {
+	public static void odenacaoMerge(int[] array, int[] l, int[] r, int left, int right) {
 
 		int i = 0, j = 0, k = 0;
 		while (i < left && j < right) {
 			if (l[i] <= r[j]) {
-				a[k++] = l[i++];
+				array[k++] = l[i++];
 			} else {
-				a[k++] = r[j++];
+				array[k++] = r[j++];
 			}
 		}
 		while (i < left) {
-			a[k++] = l[i++];
+			array[k++] = l[i++];
 		}
 		while (j < right) {
-			a[k++] = r[j++];
+			array[k++] = r[j++];
 		}
 	}
 
+	public static void ordenacaoQuickSort(int[] array, int inicio, int fim) {
+		if (inicio < fim) {
+			int posicaoPivo = separarOrdenacaoQuickSort(array, inicio, fim);
+			ordenacaoQuickSort(array, inicio, posicaoPivo - 1);
+			ordenacaoQuickSort(array, posicaoPivo + 1, fim);
+		}
+	}
+
+	private static int separarOrdenacaoQuickSort(int[] array, int inicio, int fim) {
+		int pivo = array[inicio];
+		int i = inicio + 1, f = fim;
+		while (i <= f) {
+			if (array[i] <= pivo)
+				i++;
+			else if (pivo < array[f])
+				f--;
+			else {
+				int troca = array[i];
+				array[i] = array[f];
+				array[f] = troca;
+				i++;
+				f--;
+			}
+		}
+		array[inicio] = array[f];
+		array[f] = pivo;
+		return f;
+	}
+
+	public void ordenacaoRadixSort(int array[]) {
+		for (int digit = 0; digit < 3; digit++) {
+			int power = (int) Math.pow(10, digit + 1);
+
+			int z[][] = new int[array.length][10];
+			int n[] = new int[10];
+
+			for (int i = 0; i < array.length; i++) {
+				int num = array[i];
+				z[n[(num % power) / (power / 10)]][(num % power) / (power / 10)] = num;
+				n[(num % power) / (power / 10)]++;
+
+			}
+			int c = 0;
+			for (int i = 0; i < 10; i++) {
+
+				for (int j = 0; j < array.length; j++) {
+					if (j < n[i]) {
+						array[c] = z[j][i];
+						c++;
+					} else {
+						break;
+					}
+				}
+			}
+
+		}
+	}
+
+	public static void ordenacaoBucketSort(int[] array, int max) {
+	      int[] bucket = new int[max + 1];
+	 
+	      for (int i = 0; i < bucket.length; i++) {
+	         bucket[i] = 0;
+	      }
+	 
+	      for (int i = 0; i < array.length; i++) {
+	         bucket[array[i]]++;
+	      }
+	 
+	      int x = 0;
+	      for (int i = 0; i < bucket.length; i++) {
+	         for (int j = 0; j < bucket[i]; j++) {
+	            array[x++] = i;
+	         }
+	      }
+	   }
 }
