@@ -16,8 +16,10 @@ import java.util.Arrays;
  * Sort, Count Sort, Bucket Sort e Radix Sort
  */
 public class OrdenacaoClass {
+	static long comparacoes;
 
 	public static int[] ordenacaoBublesort(int[] array) {
+		comparacoes = 0;
 		int aux = 0;
 		for (int i = 0; i < array.length - 1; i++) {
 			for (int j = 0; j < array.length - 1; j++) {
@@ -25,6 +27,7 @@ public class OrdenacaoClass {
 					aux = array[j];
 					array[j] = array[j + 1];
 					array[j + 1] = aux;
+					comparacoes++;
 				}
 			}
 		}
@@ -32,6 +35,7 @@ public class OrdenacaoClass {
 	}
 
 	public static int[] ordenacaoSelectionSort(int[] array) {
+		comparacoes = 0;
 		for (int i = 0; i < array.length; i++) {
 			int i_menor = i;
 			for (int j = i + 1; j < array.length; j++)
@@ -40,12 +44,13 @@ public class OrdenacaoClass {
 			int aux = array[i];
 			array[i] = array[i_menor];
 			array[i_menor] = aux;
-
+			comparacoes++;
 		}
 		return array;
 	}
 
 	public static int[] ordenacaoInsertionSort(int[] array) {
+		comparacoes = 0;
 		for (int i = 1; i < array.length; i++) {
 
 			int j = i;
@@ -55,18 +60,23 @@ public class OrdenacaoClass {
 				array[j] = array[j - 1];
 				array[j - 1] = aux;
 				j -= 1;
+				comparacoes++;
 			}
 		}
 		return array;
 	}
 
 	public static void ordenacaoHeapSort(int[] array) {
+		comparacoes = 0;
+
 		int tamanho = array.length;
 		int i = tamanho / 2, pai, filho, t;
+
 		while (true) {
 			if (i > 0) {
 				i--;
 				t = array[i];
+				comparacoes++;
 			} else {
 				tamanho--;
 				if (tamanho <= 0) {
@@ -80,20 +90,26 @@ public class OrdenacaoClass {
 			while (filho < tamanho) {
 				if ((filho + 1 < tamanho) && (array[filho + 1] > array[filho])) {
 					filho++;
+					comparacoes++;
 				}
 				if (array[filho] > t) {
 					array[pai] = array[filho];
 					pai = filho;
 					filho = pai * 2 + 1;
+					comparacoes++;
 				} else {
 					break;
 				}
+
 			}
 			array[pai] = t;
+
 		}
+
 	}
 
 	public static void ordenacaoMergeSort(int[] array, int n) {
+		comparacoes = 0;
 
 		if (n < 2) {
 			return;
@@ -162,6 +178,7 @@ public class OrdenacaoClass {
 	}
 
 	public void ordenacaoRadixSort(int array[]) {
+		comparacoes = 0;
 		for (int digit = 0; digit < 3; digit++) {
 			int power = (int) Math.pow(10, digit + 1);
 
@@ -191,21 +208,22 @@ public class OrdenacaoClass {
 	}
 
 	public static void ordenacaoBucketSort(int[] array, int max) {
-	      int[] bucket = new int[max + 1];
-	 
-	      for (int i = 0; i < bucket.length; i++) {
-	         bucket[i] = 0;
-	      }
-	 
-	      for (int i = 0; i < array.length; i++) {
-	         bucket[array[i]]++;
-	      }
-	 
-	      int x = 0;
-	      for (int i = 0; i < bucket.length; i++) {
-	         for (int j = 0; j < bucket[i]; j++) {
-	            array[x++] = i;
-	         }
-	      }
-	   }
+		comparacoes = 0;
+		int[] bucket = new int[max + 1];
+
+		for (int i = 0; i < bucket.length; i++) {
+			bucket[i] = 0;
+		}
+
+		for (int i = 0; i < array.length; i++) {
+			bucket[array[i]]++;
+		}
+
+		int x = 0;
+		for (int i = 0; i < bucket.length; i++) {
+			for (int j = 0; j < bucket[i]; j++) {
+				array[x++] = i;
+			}
+		}
+	}
 }

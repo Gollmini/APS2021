@@ -21,27 +21,37 @@ public class Estudo {
 	static void selecionaTipo(int codigo, int[] array) {
 
 		if (codigo == 1) {
+			System.out.println("Nome do metodo: Ordenacao Buble Sort");
 			new OrdenacaoClass().ordenacaoBublesort(array);
-			System.out.println("Buble Sort");
+			
 		} else if (codigo == 2) {
+			System.out.println("===== Ordenacao Bucket Sort =======");
 			new OrdenacaoClass().ordenacaoBucketSort(array, array.length);
-			System.out.println("Bucket Sort");
+		
 		} else if (codigo == 3) {
+			System.out.println("===== Ordenacao Selection Sort =======");
 			new OrdenacaoClass().ordenacaoSelectionSort(array);
-			System.out.println("Selection Sort");
+		
 		} else if (codigo == 4) {
+			System.out.println("Nome do metodo: Ordenacao Merge Sort");
 			new OrdenacaoClass().ordenacaoMergeSort(array, array.length);
+			
 		} else if (codigo == 5) {
-			System.out.println("Heap Sort");
+			System.out.println("Nome do metodo: Ordenacao Heap Sort");
 			new OrdenacaoClass().ordenacaoHeapSort(array);
+			
 		} else if (codigo == 6) {
+			System.out.println("===== Ordenacao Insertion Sort =======");
 			new OrdenacaoClass().ordenacaoInsertionSort(array);
+			
 		} else if (codigo == 7) {
-			System.out.println("Radix Sort");
+			System.out.println("===== Ordenacao Radix Sort =======");
 			new OrdenacaoClass().ordenacaoRadixSort(array);
+			
 		} else if (codigo == 8) {
-			System.out.println("Quick Sort");
+			System.out.println("===== Ordenacao Quick Sort =======");
 			new OrdenacaoClass().ordenacaoQuickSort(array, array[0], array.length);
+			
 		}
 	}
 
