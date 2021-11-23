@@ -6,7 +6,26 @@ public class Principal {
 
 	public static void main(String[] args) {
 
-		VetoresClass.geradorArrayAletorio(50, 5);
+		VetoresClass v = new VetoresClass();
+
+		int array[] = v.separaVetores(v.vetor5);
+		v.imprimirVetores(array);
+
+		int array2[] = v.separaVetores(v.vetor5);
+		v.imprimirVetores(array2);
+
+//		VetoresClass vetoresClass = new VetoresClass();
+//		int[][] vetores = vetoresClass.geradorArrayAletorio(50, 5);
+//
+//		int[] umVetor = vetoresClass.separaVetores(vetores);
+//		vetoresClass.imprimirVetores(umVetor);
+//		System.out.println(umVetor);
+//
+//		new OrdenacaoClass().ordenacaoRadixSort(umVetor);
+//		vetoresClass.imprimirVetores(umVetor);
+//		System.out.println(umVetor);
+
+		// new OrdenacaoClass().ordenacaoBublesort(umVetor);
 
 	}
 

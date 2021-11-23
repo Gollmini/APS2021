@@ -48,6 +48,14 @@ public class OrdenacaoClass {
 		}
 		return array;
 	}
+	
+//	public static void exc() {
+//		VetoresClass vetoresClass = new VetoresClass();
+//		int [] vetor = vetoresClass.separaVetores(vetoresClass.geradorArrayAletorio(5, 5));
+//		vetoresClass.imprimirVetores(vetor);
+//		
+//	}
+//	
 
 	public static int[] ordenacaoInsertionSort(int[] array) {
 		comparacoes = 0;

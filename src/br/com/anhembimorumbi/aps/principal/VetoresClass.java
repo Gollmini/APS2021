@@ -3,21 +3,22 @@ package br.com.anhembimorumbi.aps.principal;
 import java.util.Random;
 
 public class VetoresClass {
+	final int [][] vetor5;
+	
+	
+	public VetoresClass(){
+		vetor5 = geradorArrayAletorio(50, 5);
+		final int [][] vetor10 = geradorArrayAletorio(50, 10);
+	}
 
-//	public static int[][] tamanhoArray = new int[][]{ 5, 10, 50, 100, 1000, 10000 }{5,20};
-	public static int[][] vetor;// = new int [] [];
-	public static int[] vetorTamanho1000;
-	public static int[] vetorTamanho10000;
+	private int[][] geradorArrayAletorio(int tamanhoLinhas, int tamanhoColunas) {
+		int vetorNovo[][] = new int[tamanhoLinhas][tamanhoColunas];
 
-	public static int[][] geradorArrayAletorio(int tamanhoLinhas, int tamanhoColunas) {
+		for (int i = 0; i < vetorNovo.length; i++) {
 
-		int[][] vetorNovo = new int[tamanhoLinhas][tamanhoColunas];
-
-		for (int i = 0; i < vetorNovo[i].length; i++) {
-			vetorNovo[i][i] = new Random().nextInt(255);
-
-			for (int j = 0; j < vetorNovo[j].length; j++) {
+			for (int j = 0; j < vetorNovo[i].length; j++) {
 				vetorNovo[i][j] = new Random().nextInt(255);
+				// System.out.println(vetorNovo[i][j]);
 
 			}
 		}
@@ -25,7 +26,21 @@ public class VetoresClass {
 
 	}
 
-	public static void imprimirVetores(int[] array) {
+	public int[] separaVetores(int[][] arrayArray) {
+		int[] array = null;
+		int numeroVetor = 0;
+		for (int m = 0; m < arrayArray.length; m++) {
+			System.out.println("Iniciada a leitura do vetor: " + ++numeroVetor);
+			array = arrayArray[m];
+			System.out.println("Contem: " + array.length + " elementos");
+			System.out.println(" ");
+
+		}
+		final int arrayC[] = array;
+		return arrayC;
+	}
+
+	public void imprimirVetores(int[] array) {
 		for (int i = 0; i < array.length; i++) {
 			System.out.println(array[i]);
 		}
