@@ -1,18 +1,34 @@
 package br.com.anhembimorumbi.aps.principal;
 
-import java.util.Scanner;
-
 public class Principal {
+
+	public static final void exec() {
+
+		VetoresClass v = new VetoresClass();
+		for (int w = 0; w < 100; w++) {
+			int array[] = v.separaVetores(v.vetor100);
+
+			Estudo.medicaoExecucao(1, array);
+		}
+
+	}
 
 	public static void main(String[] args) {
 
-		VetoresClass v = new VetoresClass();
+		new Principal().exec();
 
-		int array[] = v.separaVetores(v.vetor5);
-		v.imprimirVetores(array);
-
-		int array2[] = v.separaVetores(v.vetor5);
-		v.imprimirVetores(array2);
+//		
+//		v.imprimirVetores(array);
+//		
+//		int [] arrayOrdenado = new OrdenacaoClass().ordenacaoBublesort(array);
+//		v.imprimirVetores(arrayOrdenado);
+//
+//		int array2[] = v.separaVetores(v.vetor5);
+//		v.imprimirVetores(array2);
+//		
+//		
+//		
+//		
 
 //		VetoresClass vetoresClass = new VetoresClass();
 //		int[][] vetores = vetoresClass.geradorArrayAletorio(50, 5);
