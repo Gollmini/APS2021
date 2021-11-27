@@ -5,11 +5,9 @@ public class Principal {
 	public static final void exec() {
 
 		VetoresClass v = new VetoresClass();
-		for (int w = 0; w < 100; w++) {
-			int array[] = v.separaVetores(v.vetor100);
 
-			Estudo.medicaoExecucao(1, array);
-		}
+		v.separaImprimeNumeroPosicaoElemento(v.vetor100);
+		v.separaVetores1(v.vetor100);
 
 	}
 
