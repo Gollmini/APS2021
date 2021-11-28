@@ -1,7 +1,5 @@
 package br.com.anhembimorumbi.aps.principal;
 
-import java.util.Arrays;
-
 /**
  * 
  * @author Roger Felisbino
@@ -18,7 +16,7 @@ import java.util.Arrays;
 public class OrdenacaoClass {
 	static long comparacoes;
 
-	public static int[] ordenacaoBublesort(int[] array) {
+	public final int[] ordenacaoBublesort(int[] array) {
 		comparacoes = 0;
 		int aux = 0;
 		for (int i = 0; i < array.length - 1; i++) {
@@ -34,7 +32,7 @@ public class OrdenacaoClass {
 		return array;
 	}
 
-	public static int[] ordenacaoSelectionSort(int[] array) {
+	public final int[] ordenacaoSelectionSort(int[] array) {
 		comparacoes = 0;
 		for (int i = 0; i < array.length; i++) {
 			int i_menor = i;
@@ -48,7 +46,7 @@ public class OrdenacaoClass {
 		}
 		return array;
 	}
-	
+
 //	public static void exc() {
 //		VetoresClass vetoresClass = new VetoresClass();
 //		int [] vetor = vetoresClass.separaVetores(vetoresClass.geradorArrayAletorio(5, 5));
@@ -57,7 +55,7 @@ public class OrdenacaoClass {
 //	}
 //	
 
-	public static int[] ordenacaoInsertionSort(int[] array) {
+	public final int[] ordenacaoInsertionSort(int[] array) {
 		comparacoes = 0;
 		for (int i = 1; i < array.length; i++) {
 
@@ -74,7 +72,7 @@ public class OrdenacaoClass {
 		return array;
 	}
 
-	public static void ordenacaoHeapSort(int[] array) {
+	public final void ordenacaoHeapSort(int[] array) {
 		comparacoes = 0;
 
 		int tamanho = array.length;
@@ -116,7 +114,7 @@ public class OrdenacaoClass {
 
 	}
 
-	public static void ordenacaoMergeSort(int[] array, int n) {
+	public final void ordenacaoMergeSort(int[] array, int n) {
 		comparacoes = 0;
 
 		if (n < 2) {
@@ -138,7 +136,7 @@ public class OrdenacaoClass {
 		odenacaoMerge(array, l, r, mid, n - mid);
 	}
 
-	public static void odenacaoMerge(int[] array, int[] l, int[] r, int left, int right) {
+	public final void odenacaoMerge(int[] array, int[] l, int[] r, int left, int right) {
 
 		int i = 0, j = 0, k = 0;
 		while (i < left && j < right) {
@@ -156,7 +154,7 @@ public class OrdenacaoClass {
 		}
 	}
 
-	public static void ordenacaoQuickSort(int[] array, int inicio, int fim) {
+	public final void ordenacaoQuickSort(int[] array, int inicio, int fim) {
 		if (inicio < fim) {
 			int posicaoPivo = separarOrdenacaoQuickSort(array, inicio, fim);
 			ordenacaoQuickSort(array, inicio, posicaoPivo - 1);
@@ -164,7 +162,7 @@ public class OrdenacaoClass {
 		}
 	}
 
-	private static int separarOrdenacaoQuickSort(int[] array, int inicio, int fim) {
+	private final int separarOrdenacaoQuickSort(int[] array, int inicio, int fim) {
 		int pivo = array[inicio];
 		int i = inicio + 1, f = fim;
 		while (i <= f) {
@@ -185,7 +183,7 @@ public class OrdenacaoClass {
 		return f;
 	}
 
-	public void ordenacaoRadixSort(int array[]) {
+	public final void ordenacaoRadixSort(int array[]) {
 		comparacoes = 0;
 		for (int digit = 0; digit < 3; digit++) {
 			int power = (int) Math.pow(10, digit + 1);
@@ -215,7 +213,7 @@ public class OrdenacaoClass {
 		}
 	}
 
-	public static void ordenacaoBucketSort(int[] array, int max) {
+	public final void ordenacaoBucketSort(int[] array, int max) {
 		comparacoes = 0;
 		int[] bucket = new int[max + 1];
 

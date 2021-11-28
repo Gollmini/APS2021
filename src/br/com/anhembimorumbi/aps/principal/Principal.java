@@ -2,82 +2,41 @@ package br.com.anhembimorumbi.aps.principal;
 
 public class Principal {
 
-	public static final void exec() {
-
-		VetoresClass v = new VetoresClass();
-
-		v.separaImprimeNumeroPosicaoElemento(v.vetor100);
-		v.separaVetores1(v.vetor100);
-
-	}
-
 	public static void main(String[] args) {
 
-		new Principal().exec();
+		VetoresClass vetores = new VetoresClass();
 
-//		
-//		v.imprimirVetores(array);
-//		
-//		int [] arrayOrdenado = new OrdenacaoClass().ordenacaoBublesort(array);
-//		v.imprimirVetores(arrayOrdenado);
-//
-//		int array2[] = v.separaVetores(v.vetor5);
-//		v.imprimirVetores(array2);
-//		
-//		
-//		
-//		
+		MedidoresEstudo medidoresEstudo = new MedidoresEstudo();
 
-//		VetoresClass vetoresClass = new VetoresClass();
-//		int[][] vetores = vetoresClass.geradorArrayAletorio(50, 5);
-//
-//		int[] umVetor = vetoresClass.separaVetores(vetores);
-//		vetoresClass.imprimirVetores(umVetor);
-//		System.out.println(umVetor);
-//
-//		new OrdenacaoClass().ordenacaoRadixSort(umVetor);
-//		vetoresClass.imprimirVetores(umVetor);
-//		System.out.println(umVetor);
+		// medidoresEstudo.selecionaTipo(1, );
 
-		// new OrdenacaoClass().ordenacaoBublesort(umVetor);
-
+		medidoresEstudo.medeTempo(1, vetores.preparaVetor(vetores.vetor10));
+	//	medidoresEstudo.medeTempo(2, vetores.preparaVetor(vetores.vetor10));
+		medidoresEstudo.medeTempo(3, vetores.preparaVetor(vetores.vetor10));
+		medidoresEstudo.medeTempo(4, vetores.preparaVetor(vetores.vetor10));
+		medidoresEstudo.medeTempo(5, vetores.preparaVetor(vetores.vetor10));
+		medidoresEstudo.medeTempo(6, vetores.preparaVetor(vetores.vetor10));
+		medidoresEstudo.medeTempo(7, vetores.preparaVetor(vetores.vetor10));
+		medidoresEstudo.medeTempo(8, vetores.preparaVetor(vetores.vetor10));
+		
+		/*
+		 * 
+		 * Scanner scanner = new Scanner(System.in);
+		 * 
+		 * String menu = "		Codigo 1: Ordenacao Buble Sort\r\n" +
+		 * "		Codigo 2: Ordenacao Bucket Sort\r\n" +
+		 * "		Codigo 3: Ordenacao Selection Sort\r\n" +
+		 * "		Codigo 4: Ordenacao Merge Sort\r\n" +
+		 * "		Codigo 5: Ordenacao Heap Sort\r\n" +
+		 * "		Codigo 6: Ordenacao Insertion Sort\r\n" +
+		 * "		Codigo 7: Ordenacao Radix Sort\r\n" +
+		 * "		Codigo 8: Ordenacao Quick Sort";
+		 * 
+		 * System.out.println(menu);
+		 * 
+		 * System.out.println("digite o codigo correspondente:"); int codigo =
+		 * scanner.nextInt(); // recebeCodidoeExecut(tamanhoVetor, codigo);
+		 * scanner.close();
+		 */
 	}
-
-	/*
-	 * 
-	 * Scanner scanner = new Scanner(System.in);
-	 * 
-	 * String menu = "		Codigo 1: Ordenacao Buble Sort\r\n" +
-	 * "		Codigo 2: Ordenacao Bucket Sort\r\n" +
-	 * "		Codigo 3: Ordenacao Selection Sort\r\n" +
-	 * "		Codigo 4: Ordenacao Merge Sort\r\n" +
-	 * "		Codigo 5: Ordenacao Heap Sort\r\n" +
-	 * "		Codigo 6: Ordenacao Insertion Sort\r\n" +
-	 * "		Codigo 7: Ordenacao Radix Sort\r\n" +
-	 * "		Codigo 8: Ordenacao Quick Sort";
-	 * 
-	 * System.out.println(menu);
-	 * 
-	 * System.out.println("digite o codigo correspondente:"); int codigo =
-	 * scanner.nextInt(); // recebeCodidoeExecut(tamanhoVetor, codigo);
-	 * scanner.close();
-	 */
-
-	/*
-	 * public static void recebeCodidoeExecut(int[] tamanhoVetor, int codigo) { for
-	 * (int i = 0; i < tamanhoVetor.length; i++) { final int vetor[] = new
-	 * VetoresClass().geradorArrayAletorio(tamanhoVetor[i]); Estudo e = new
-	 * Estudo();
-	 * 
-	 * System.out.println("Tempo de execucao: " + e.medicaoExecucao(codigo, vetor));
-	 * System.out.println("Tamanho do vetor: " + tamanhoVetor[i]);
-	 * System.out.println("Total de comparacoes: " + new
-	 * OrdenacaoClass().comparacoes);
-	 * 
-	 * System.out.println("                   ");
-	 * 
-	 * 
-	 * }}
-	 */
-
 }

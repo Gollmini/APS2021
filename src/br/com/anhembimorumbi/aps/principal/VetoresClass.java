@@ -32,63 +32,68 @@ public class VetoresClass {
 	}
 
 	/**
-	 * Separa vetores para o metodo de ordenacao poder trabalhar com cada vetor ;;
-	 * Imprime o numero do vetor, a quantidade de elementos, a posicao e o conteudo (elemento)
-	 * @param arrayArray --> um vetor de Vetores a ser separado 
+	 * Separa vetores; Imprime numero do vetor, quantidade de elementos, posicao e o
+	 * elementos
+	 * 
+	 * @param arrayArray --> um vetor de Vetores a ser separado
 	 * @return array --> vetor de inteiros para passagem aos métodos de ordenacao
 	 */
-	public int[] separaImprimeNumeroPosicaoElemento(int[][] arrayArray) {
+	public int[] preparaVetor(int[][] arrayArray) {
 		int[] array = null;
 		int numeroVetor = 0;
 		for (int m = 0; m < arrayArray.length; m++) {
-			System.out.println("Iniciada a leitura do vetor: " + ++numeroVetor);
+			// System.out.println("Iniciada a leitura do vetor: " + ++numeroVetor);
 			array = arrayArray[m];
-			System.out.println("Contem: " + array.length + " elementos");
-			int posicao = 0;
-			for (int h = 0; h < array.length; h++) {
-
-				System.out.println("Vetordesordenado : " + numeroVetor + " Posicao: " + posicao++ + " Elemento: " + array[h]);
-			}
+			// System.out.println("Contem: " + array.length + " elementos");
+//			int posicao = 0;
+//			for (int h = 0; h < array.length; h++) {
+//
+//				System.out.println(
+//						"Vetordesordenado : " + numeroVetor + " Posicao: " + posicao++ + " Elemento: " + array[h]);
+//			}
 
 		}
+		System.out.println("Contem: " + array.length + " elementos");
+
+		System.out.println(array);
+
 		final int arrayC[] = array;
 		return arrayC;
 	}
 
-	
 	public final int[] separaVetores1(int[][] arrayArray) {
 		int[] array = null;
 		int numeroVetor = 0;
 		for (int m = 0; m < arrayArray.length; m++) {
 			System.out.println("Iniciada a leitura do vetor: " + ++numeroVetor);
 			array = arrayArray[m];
-			new OrdenacaoClass();
-			int arrayOrdenado[] = OrdenacaoClass.ordenacaoBublesort(array);
+			OrdenacaoClass ordenacao = new OrdenacaoClass();
+			int arrayOrdenado[] = ordenacao.ordenacaoBublesort(array);
 			int posicao = 0;
 			for (int h = 0; h < arrayOrdenado.length; h++) {
 
-				System.out
-						.println("Vetor ordenado: " + numeroVetor + " Posicao: " + posicao++ + " Elemento: " + arrayOrdenado[h]);
+				System.out.println(
+						"Vetor ordenado: " + numeroVetor + " Posicao: " + posicao++ + " Elemento: " + arrayOrdenado[h]);
 			}
 
 		}
 		final int arrayC[] = array;
 		return arrayC;
 	}
-	
+
 	public final int[] executaOrdenacaoMedeTempo(int[][] arrayArray) {
 		int[] array = null;
 		int numeroVetor = 0;
 		for (int m = 0; m < arrayArray.length; m++) {
 			System.out.println("Iniciada a leitura do vetor: " + ++numeroVetor);
 			array = arrayArray[m];
-			new OrdenacaoClass();
-			int arrayOrdenado[] = OrdenacaoClass.ordenacaoBublesort(array);
+			OrdenacaoClass ordenacao = new OrdenacaoClass();
+			int arrayOrdenado[] = ordenacao.ordenacaoBublesort(array);
 			int posicao = 0;
 			for (int h = 0; h < arrayOrdenado.length; h++) {
 
-				System.out
-						.println("Vetor ordenado: " + numeroVetor + " Posicao: " + posicao++ + " Elemento: " + arrayOrdenado[h]);
+				System.out.println(
+						"Vetor ordenado: " + numeroVetor + " Posicao: " + posicao++ + " Elemento: " + arrayOrdenado[h]);
 			}
 
 		}
