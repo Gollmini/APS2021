@@ -1,22 +1,49 @@
 package br.com.anhembimorumbi.aps.principal;
 
-/**
- * 
- * @author Roger Felisbino
- * @Descricao Ordenar todos os vetores através de cada um dos métodos de
- *            ordenação propostos e contar o número de comparações entre os
- *            elementos em cada ordenação realizada.
- *
- */
-
-/*
- * Bubble Sort, Selection Sort, Insertion Sort, Heap Sort, Merge Sort, Quick
- * Sort, Count Sort, Bucket Sort e Radix Sort
- */
 public class OrdenacaoClass {
 	static long comparacoes;
+	private int[] numbers;
+	private int number;
+	VetoresClass vetores;
 
-	public final int[] ordenacaoBublesort(int[] array) {
+//	public final int[] separaVetores1(int[][] arrayArray) {
+//		int[] array = null;
+//		int numeroVetor = 0;
+//		for (int m = 0; m < arrayArray.length; m++) {
+//			System.out.println("Iniciada a leitura do vetor: " + ++numeroVetor);
+//			array = arrayArray[m];
+//			OrdenacaoClass ordenacao = new OrdenacaoClass();
+//			int arrayOrdenado[] = ordenacao.ordenacaoBublesort(array);
+//			int posicao = 0;
+//			for (int h = 0; h < arrayOrdenado.length; h++) {
+//
+//				System.out.println(
+//						"Vetor ordenado: " + numeroVetor + " Posicao: " + posicao++ + " Elemento: " + arrayOrdenado[h]);
+//			}
+//
+//		}
+//		final int arrayC[] = array;
+//		return arrayC;
+//	}
+
+	/**
+	 * cria um vetor novo com elementos de outro vetor
+	 * 
+	 * @param array --> vetor a ser copiado
+	 * @return --> novo array
+	 */
+	public int[] copiaVetor(int array[]) {
+		int[] novoArray = new int[array.length];
+		for (int i = 0; i < array.length; i++) {
+			novoArray[i] = array[i];
+		}
+
+		return novoArray;
+	}
+
+	public final int[] ordenacaoBublesort(int[] arrayParam1) {
+		int array[] = copiaVetor(arrayParam1);
+
 		comparacoes = 0;
 		int aux = 0;
 		for (int i = 0; i < array.length - 1; i++) {
@@ -32,7 +59,8 @@ public class OrdenacaoClass {
 		return array;
 	}
 
-	public final int[] ordenacaoSelectionSort(int[] array) {
+	public final int[] ordenacaoSelectionSort(int[] arrayParam2) {
+		int array[] = copiaVetor(arrayParam2);
 		comparacoes = 0;
 		for (int i = 0; i < array.length; i++) {
 			int i_menor = i;
@@ -47,15 +75,8 @@ public class OrdenacaoClass {
 		return array;
 	}
 
-//	public static void exc() {
-//		VetoresClass vetoresClass = new VetoresClass();
-//		int [] vetor = vetoresClass.separaVetores(vetoresClass.geradorArrayAletorio(5, 5));
-//		vetoresClass.imprimirVetores(vetor);
-//		
-//	}
-//	
-
-	public final int[] ordenacaoInsertionSort(int[] array) {
+	public final int[] ordenacaoInsertionSort(int[] arrayParam3) {
+		int array[] = copiaVetor(arrayParam3);
 		comparacoes = 0;
 		for (int i = 1; i < array.length; i++) {
 
@@ -72,9 +93,9 @@ public class OrdenacaoClass {
 		return array;
 	}
 
-	public final void ordenacaoHeapSort(int[] array) {
+	public final void ordenacaoHeapSort(int[] arrayParam4) {
+		int array[] = copiaVetor(arrayParam4);
 		comparacoes = 0;
-
 		int tamanho = array.length;
 		int i = tamanho / 2, pai, filho, t;
 
@@ -154,11 +175,11 @@ public class OrdenacaoClass {
 		}
 	}
 
-	public final void ordenacaoQuickSort(int[] array, int inicio, int fim) {
+	public final void qordenacaoQuickSort(int[] array, int inicio, int fim) {
 		if (inicio < fim) {
 			int posicaoPivo = separarOrdenacaoQuickSort(array, inicio, fim);
-			ordenacaoQuickSort(array, inicio, posicaoPivo - 1);
-			ordenacaoQuickSort(array, posicaoPivo + 1, fim);
+			qordenacaoQuickSort(array, inicio, posicaoPivo - 1);
+			qordenacaoQuickSort(array, posicaoPivo + 1, fim);
 		}
 	}
 
@@ -183,7 +204,8 @@ public class OrdenacaoClass {
 		return f;
 	}
 
-	public final void ordenacaoRadixSort(int array[]) {
+	public final void ordenacaoRadixSort(int arrayParam5[]) {
+		int[] array = copiaVetor(arrayParam5);
 		comparacoes = 0;
 		for (int digit = 0; digit < 3; digit++) {
 			int power = (int) Math.pow(10, digit + 1);
@@ -213,23 +235,83 @@ public class OrdenacaoClass {
 		}
 	}
 
-	public final void ordenacaoBucketSort(int[] array, int max) {
-		comparacoes = 0;
-		int[] bucket = new int[max + 1];
+	public final void ordenacaoBucketSort(int[] arrayParam6) {
+		int[] array = copiaVetor(arrayParam6);
 
-		for (int i = 0; i < bucket.length; i++) {
-			bucket[i] = 0;
+		int max = array[0];
+		int min = array[0];
+
+		// Find the maximim and minimum integers in the array.
+		for (int index = 0; index < array.length; index++) {
+			if (array[index] > max)
+				max = array[index];
+			if (array[index] < min)
+				min = array[index];
 		}
 
-		for (int i = 0; i < array.length; i++) {
-			bucket[array[i]]++;
+		int[] buckets = new int[(max - min) + 1];
+
+		// Initialize each bucket with the values of the array.
+		for (int index = 0; index < array.length; index++) {
+			buckets[array[index] - min]++;
 		}
 
-		int x = 0;
-		for (int i = 0; i < bucket.length; i++) {
-			for (int j = 0; j < bucket[i]; j++) {
-				array[x++] = i;
+		int pointer = 0;
+
+		// Dump the bucket values into the array.
+		for (int index = 0; index < array.length; index++) {
+			if (buckets[pointer] != 0) {
+				array[index] = pointer + min;
+				buckets[pointer]--;
+			} else {
+				index--;
+				pointer++;
 			}
 		}
+
 	}
+
+	public final void ordenacaoQuickSort(int[] arrayParam7) {
+		int[] array = copiaVetor(arrayParam7);
+
+		if (array == null || array.length == 0) {
+			return;
+		}
+
+		this.numbers = array;
+		number = array.length;
+		quicksort(0, number - 1);
+	}
+
+	private void quicksort(int low, int high) {
+		int i = low, j = high;
+		int pivot = numbers[low + (high - low) / 2];
+
+		while (i <= j) {
+			while (numbers[i] < pivot) {
+				i++;
+			}
+
+			while (numbers[j] > pivot) {
+				j--;
+			}
+
+			if (i <= j) {
+				exchange(i, j);
+				i++;
+				j--;
+			}
+		}
+		if (low < j)
+			quicksort(low, j);
+		if (i < high)
+			quicksort(i, high);
+	}
+
+	private void exchange(int i, int j) {
+		int temp = numbers[i];
+		numbers[i] = numbers[j];
+		numbers[j] = temp;
+	}
+
 }
