@@ -1,30 +1,18 @@
 package br.com.anhembimorumbi.aps.principal;
 
 public class OrdenacaoClass {
-	static long comparacoes;
+	static long comparacoesBubleSort;
+	static long comparacoesSelectionSort;
+	static long comparacoesInsertionSort;
+	static long comparacoesQuickSort;
+	static long comparacoesMergeSort;
+	static long comparacoesRadixSort;
+	static long comparacoesHeapSort;
+	static long comparacoesBucketSort;
+
 	private int[] numbers;
 	private int number;
 	VetoresClass vetores;
-
-//	public final int[] separaVetores1(int[][] arrayArray) {
-//		int[] array = null;
-//		int numeroVetor = 0;
-//		for (int m = 0; m < arrayArray.length; m++) {
-//			System.out.println("Iniciada a leitura do vetor: " + ++numeroVetor);
-//			array = arrayArray[m];
-//			OrdenacaoClass ordenacao = new OrdenacaoClass();
-//			int arrayOrdenado[] = ordenacao.ordenacaoBublesort(array);
-//			int posicao = 0;
-//			for (int h = 0; h < arrayOrdenado.length; h++) {
-//
-//				System.out.println(
-//						"Vetor ordenado: " + numeroVetor + " Posicao: " + posicao++ + " Elemento: " + arrayOrdenado[h]);
-//			}
-//
-//		}
-//		final int arrayC[] = array;
-//		return arrayC;
-//	}
 
 	/**
 	 * cria um vetor novo com elementos de outro vetor
@@ -32,7 +20,7 @@ public class OrdenacaoClass {
 	 * @param array --> vetor a ser copiado
 	 * @return --> novo array
 	 */
-	public int[] copiaVetor(int array[]) {
+	public int[] obterVetor(int array[]) {
 		int[] novoArray = new int[array.length];
 		for (int i = 0; i < array.length; i++) {
 			novoArray[i] = array[i];
@@ -42,9 +30,9 @@ public class OrdenacaoClass {
 	}
 
 	public final int[] ordenacaoBublesort(int[] arrayParam1) {
-		int array[] = copiaVetor(arrayParam1);
+		int array[] = obterVetor(arrayParam1);
 
-		comparacoes = 0;
+		comparacoesBubleSort = 0;
 		int aux = 0;
 		for (int i = 0; i < array.length - 1; i++) {
 			for (int j = 0; j < array.length - 1; j++) {
@@ -52,7 +40,7 @@ public class OrdenacaoClass {
 					aux = array[j];
 					array[j] = array[j + 1];
 					array[j + 1] = aux;
-					comparacoes++;
+					comparacoesBubleSort++;
 				}
 			}
 		}
@@ -60,8 +48,8 @@ public class OrdenacaoClass {
 	}
 
 	public final int[] ordenacaoSelectionSort(int[] arrayParam2) {
-		int array[] = copiaVetor(arrayParam2);
-		comparacoes = 0;
+		int array[] = obterVetor(arrayParam2);
+		comparacoesSelectionSort = 0;
 		for (int i = 0; i < array.length; i++) {
 			int i_menor = i;
 			for (int j = i + 1; j < array.length; j++)
@@ -70,14 +58,14 @@ public class OrdenacaoClass {
 			int aux = array[i];
 			array[i] = array[i_menor];
 			array[i_menor] = aux;
-			comparacoes++;
+			comparacoesSelectionSort++;
 		}
 		return array;
 	}
 
 	public final int[] ordenacaoInsertionSort(int[] arrayParam3) {
-		int array[] = copiaVetor(arrayParam3);
-		comparacoes = 0;
+		int array[] = obterVetor(arrayParam3);
+		comparacoesInsertionSort = 0;
 		for (int i = 1; i < array.length; i++) {
 
 			int j = i;
@@ -87,15 +75,15 @@ public class OrdenacaoClass {
 				array[j] = array[j - 1];
 				array[j - 1] = aux;
 				j -= 1;
-				comparacoes++;
+				comparacoesInsertionSort++;
 			}
 		}
 		return array;
 	}
 
 	public final void ordenacaoHeapSort(int[] arrayParam4) {
-		int array[] = copiaVetor(arrayParam4);
-		comparacoes = 0;
+		int array[] = obterVetor(arrayParam4);
+		comparacoesHeapSort = 0;
 		int tamanho = array.length;
 		int i = tamanho / 2, pai, filho, t;
 
@@ -103,7 +91,7 @@ public class OrdenacaoClass {
 			if (i > 0) {
 				i--;
 				t = array[i];
-				comparacoes++;
+				comparacoesHeapSort++;
 			} else {
 				tamanho--;
 				if (tamanho <= 0) {
@@ -117,13 +105,13 @@ public class OrdenacaoClass {
 			while (filho < tamanho) {
 				if ((filho + 1 < tamanho) && (array[filho + 1] > array[filho])) {
 					filho++;
-					comparacoes++;
+					comparacoesHeapSort++;
 				}
 				if (array[filho] > t) {
 					array[pai] = array[filho];
 					pai = filho;
 					filho = pai * 2 + 1;
-					comparacoes++;
+					comparacoesHeapSort++;
 				} else {
 					break;
 				}
@@ -135,8 +123,9 @@ public class OrdenacaoClass {
 
 	}
 
-	public final void ordenacaoMergeSort(int[] array, int n) {
-		comparacoes = 0;
+	public final void ordenacaoMergeSort(int[] arrayParam9, int n) {
+		int array[] = obterVetor(arrayParam9);
+		comparacoesMergeSort = 0;
 
 		if (n < 2) {
 			return;
@@ -150,14 +139,15 @@ public class OrdenacaoClass {
 		}
 		for (int i = mid; i < n; i++) {
 			r[i - mid] = array[i];
+			comparacoesMergeSort++;
 		}
 		ordenacaoMergeSort(l, mid);
 		ordenacaoMergeSort(r, n - mid);
 
-		odenacaoMerge(array, l, r, mid, n - mid);
+		merge(array, l, r, mid, n - mid);
 	}
 
-	public final void odenacaoMerge(int[] array, int[] l, int[] r, int left, int right) {
+	public final void merge(int[] array, int[] l, int[] r, int left, int right) {
 
 		int i = 0, j = 0, k = 0;
 		while (i < left && j < right) {
@@ -169,14 +159,17 @@ public class OrdenacaoClass {
 		}
 		while (i < left) {
 			array[k++] = l[i++];
+			comparacoesMergeSort++;
 		}
 		while (j < right) {
 			array[k++] = r[j++];
+			comparacoesMergeSort++;
 		}
 	}
 
 	public final void qordenacaoQuickSort(int[] array, int inicio, int fim) {
 		if (inicio < fim) {
+			comparacoesQuickSort++;
 			int posicaoPivo = separarOrdenacaoQuickSort(array, inicio, fim);
 			qordenacaoQuickSort(array, inicio, posicaoPivo - 1);
 			qordenacaoQuickSort(array, posicaoPivo + 1, fim);
@@ -187,16 +180,20 @@ public class OrdenacaoClass {
 		int pivo = array[inicio];
 		int i = inicio + 1, f = fim;
 		while (i <= f) {
-			if (array[i] <= pivo)
+			comparacoesQuickSort++;
+			if (array[i] <= pivo) {
 				i++;
-			else if (pivo < array[f])
+				comparacoesQuickSort++;
+			} else if (pivo < array[f]) {
 				f--;
-			else {
+				comparacoesQuickSort++;
+			} else {
 				int troca = array[i];
 				array[i] = array[f];
 				array[f] = troca;
 				i++;
 				f--;
+				comparacoesQuickSort++;
 			}
 		}
 		array[inicio] = array[f];
@@ -205,11 +202,12 @@ public class OrdenacaoClass {
 	}
 
 	public final void ordenacaoRadixSort(int arrayParam5[]) {
-		int[] array = copiaVetor(arrayParam5);
-		comparacoes = 0;
+		int totalComparacoes;
+		int[] array = obterVetor(arrayParam5);
+		comparacoesRadixSort = 0;
 		for (int digit = 0; digit < 3; digit++) {
 			int power = (int) Math.pow(10, digit + 1);
-
+			comparacoesRadixSort++;
 			int z[][] = new int[array.length][10];
 			int n[] = new int[10];
 
@@ -217,6 +215,7 @@ public class OrdenacaoClass {
 				int num = array[i];
 				z[n[(num % power) / (power / 10)]][(num % power) / (power / 10)] = num;
 				n[(num % power) / (power / 10)]++;
+				comparacoesRadixSort++;
 
 			}
 			int c = 0;
@@ -226,6 +225,7 @@ public class OrdenacaoClass {
 					if (j < n[i]) {
 						array[c] = z[j][i];
 						c++;
+						comparacoesRadixSort++;
 					} else {
 						break;
 					}
@@ -236,7 +236,8 @@ public class OrdenacaoClass {
 	}
 
 	public final void ordenacaoBucketSort(int[] arrayParam6) {
-		int[] array = copiaVetor(arrayParam6);
+		comparacoesBucketSort = 0;
+		int[] array = obterVetor(arrayParam6);
 
 		int max = array[0];
 		int min = array[0];
@@ -245,8 +246,10 @@ public class OrdenacaoClass {
 		for (int index = 0; index < array.length; index++) {
 			if (array[index] > max)
 				max = array[index];
+			comparacoesBucketSort++;
 			if (array[index] < min)
 				min = array[index];
+			comparacoesBucketSort++;
 		}
 
 		int[] buckets = new int[(max - min) + 1];
@@ -254,6 +257,7 @@ public class OrdenacaoClass {
 		// Initialize each bucket with the values of the array.
 		for (int index = 0; index < array.length; index++) {
 			buckets[array[index] - min]++;
+			comparacoesBucketSort++;
 		}
 
 		int pointer = 0;
@@ -263,16 +267,18 @@ public class OrdenacaoClass {
 			if (buckets[pointer] != 0) {
 				array[index] = pointer + min;
 				buckets[pointer]--;
+				comparacoesBucketSort++;
 			} else {
 				index--;
 				pointer++;
+				comparacoesBucketSort++;
 			}
 		}
 
 	}
 
 	public final void ordenacaoQuickSort(int[] arrayParam7) {
-		int[] array = copiaVetor(arrayParam7);
+		int[] array = obterVetor(arrayParam7);
 
 		if (array == null || array.length == 0) {
 			return;
@@ -312,6 +318,30 @@ public class OrdenacaoClass {
 		int temp = numbers[i];
 		numbers[i] = numbers[j];
 		numbers[j] = temp;
+	}
+
+	public void ordenacaoCountSort(int[] arrayParam8) {
+		int[] array = obterVetor(arrayParam8);
+		int max = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] > max) {
+				max = array[i];
+			}
+		}
+		int[] temp = new int[max + 1];
+		for (int i = 0; i < array.length; i++) {
+			temp[array[i]] = temp[array[i]] + 1;
+		}
+		int indice = 0;
+		for (int i = 0; i < temp.length; i++) {
+			while (temp[i] > 0) {
+				array[indice] = i;
+				indice++;
+				temp[i]--;
+			}
+
+		}
+
 	}
 
 }
