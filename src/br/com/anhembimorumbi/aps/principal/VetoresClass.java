@@ -4,11 +4,11 @@ import java.util.Random;
 
 public class VetoresClass {
 
-	 final int[][] vetor5 = geradorArrayAletorio(50, 5);
-	private final int[][] vetor10 = geradorArrayAletorio(50, 10);
-	private int[][] vetor100 = geradorArrayAletorio(50, 100);
-	private int[][] vetor1000 = geradorArrayAletorio(50, 1000);
-	private int[][] vetor10000 = geradorArrayAletorio(50, 10000);
+	final int[][] vetor5 = geradorArrayAletorio(50, 5);
+	final int[][] vetor10 = geradorArrayAletorio(50, 10);
+	final int[][] vetor100 = geradorArrayAletorio(50, 100);
+	final int[][] vetor1000 = geradorArrayAletorio(50, 1000);
+	final int[][] vetor10000 = geradorArrayAletorio(50, 10000);
 
 	private int[][] geradorArrayAletorio(int tamanhoLinhas, int tamanhoColunas) {
 		int vetorNovo[][] = new int[tamanhoLinhas][tamanhoColunas];
@@ -58,7 +58,7 @@ public class VetoresClass {
 		int[] array = null;
 		int numeroVetor = 0;
 		for (int m = 0; m < arrayArray.length; m++) {
-		//	System.out.println("Iniciada a leitura do vetor: " + ++numeroVetor);
+			// System.out.println("Iniciada a leitura do vetor: " + ++numeroVetor);
 			array = arrayArray[m];
 //			OrdenacaoClass ordenacao = new OrdenacaoClass();
 //			int arrayOrdenado[] = ordenacao.ordenacaoBublesort(array);
@@ -93,7 +93,5 @@ public class VetoresClass {
 		final int arrayC[] = array;
 		return arrayC;
 	}
-
-	
 
 }

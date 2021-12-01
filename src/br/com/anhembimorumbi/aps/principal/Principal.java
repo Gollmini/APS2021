@@ -7,14 +7,14 @@ public class Principal {
 		MedidoresEstudo estudo = new MedidoresEstudo();
 
 		System.out.println("b" + vetores.vetor5[0][0]);
-		estudo.executaOrdenacoesVetores(vetores.vetor5, 1);
-		estudo.executaOrdenacoesVetores(vetores.vetor5, 2);
-		estudo.executaOrdenacoesVetores(vetores.vetor5, 3);
-		estudo.executaOrdenacoesVetores(vetores.vetor5, 4);
-		estudo.executaOrdenacoesVetores(vetores.vetor5, 5);
-		estudo.executaOrdenacoesVetores(vetores.vetor5, 6);
-		estudo.executaOrdenacoesVetores(vetores.vetor5, 7);
-		estudo.executaOrdenacoesVetores(vetores.vetor5, 8);
+		estudo.executaOrdenacoesVetores(vetores.vetor10000, 1);
+		estudo.executaOrdenacoesVetores(vetores.vetor10000, 2);
+		estudo.executaOrdenacoesVetores(vetores.vetor10000, 3);
+		estudo.executaOrdenacoesVetores(vetores.vetor10000, 4);
+		estudo.executaOrdenacoesVetores(vetores.vetor10000, 5);
+		estudo.executaOrdenacoesVetores(vetores.vetor10000, 6);
+		estudo.executaOrdenacoesVetores(vetores.vetor10000, 7);
+	//	estudo.executaOrdenacoesVetores(vetores.vetor10, 8);
 		System.out.println("a" + vetores.vetor5[0][0]);
 
 //		System.out.println("------ Total de comparações ------");
