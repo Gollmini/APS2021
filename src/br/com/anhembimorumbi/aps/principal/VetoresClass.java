@@ -20,7 +20,6 @@ public class VetoresClass {
 			}
 		}
 		return vetorNovo;
-
 	}
 
 	public int[] copiaVetor(int array[]) {
@@ -28,47 +27,13 @@ public class VetoresClass {
 		for (int i = 0; i < array.length; i++) {
 			novoArray[i] = array[i];
 		}
-
 		return novoArray;
-	}
-
-	/**
-	 * Separa vetores; Imprime numero do vetor, quantidade de elementos, posicao e o
-	 * elementos
-	 * 
-	 * @param arrayArray --> um vetor de Vetores a ser separado
-	 * @return array --> vetor de inteiros para passagem aos métodos de ordenacao
-	 */
-	@Deprecated
-	public int[] preparaVetor(int[][] arrayArray, int codigo) {
-		int[] array = null;
-		int numeroVetor = 0;
-		for (int m = 0; m < arrayArray.length; m++) {
-			array = arrayArray[m];
-			// medidoresEstudos.medeTempo(codigo, array);
-		}
-		System.out.println("Contem: " + array.length + " elementos");
-		System.out.println("ID do vetor: " + array);
-
-		final int arrayC[] = array;
-		return arrayC;
 	}
 
 	public final int[] separaVetores1(int[][] arrayArray) {
 		int[] array = null;
-		int numeroVetor = 0;
 		for (int m = 0; m < arrayArray.length; m++) {
-			// System.out.println("Iniciada a leitura do vetor: " + ++numeroVetor);
 			array = arrayArray[m];
-//			OrdenacaoClass ordenacao = new OrdenacaoClass();
-//			int arrayOrdenado[] = ordenacao.ordenacaoBublesort(array);
-//			int posicao = 0;
-//			for (int h = 0; h < arrayOrdenado.length; h++) {
-//
-//				System.out.println(
-//						"Vetor ordenado: " + numeroVetor + " Posicao: " + posicao++ + " Elemento: " + arrayOrdenado[h]);
-//			}
-
 		}
 		final int arrayC[] = array;
 		return arrayC;
@@ -88,10 +53,8 @@ public class VetoresClass {
 				System.out.println(
 						"Vetor ordenado: " + numeroVetor + " Posicao: " + posicao++ + " Elemento: " + arrayOrdenado[h]);
 			}
-
 		}
 		final int arrayC[] = array;
 		return arrayC;
 	}
-
 }

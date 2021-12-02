@@ -14,18 +14,11 @@ public class OrdenacaoClass {
 	private int number;
 	VetoresClass vetores;
 
-	/**
-	 * cria um vetor novo com elementos de outro vetor
-	 * 
-	 * @param array --> vetor a ser copiado
-	 * @return --> novo array
-	 */
 	public int[] obterVetor(int array[]) {
 		int[] novoArray = new int[array.length];
 		for (int i = 0; i < array.length; i++) {
 			novoArray[i] = array[i];
 		}
-
 		return novoArray;
 	}
 
@@ -202,7 +195,6 @@ public class OrdenacaoClass {
 	}
 
 	public final void ordenacaoRadixSort(int arrayParam5[]) {
-		int totalComparacoes;
 		int[] array = obterVetor(arrayParam5);
 		comparacoesRadixSort = 0;
 		for (int digit = 0; digit < 3; digit++) {
@@ -242,7 +234,6 @@ public class OrdenacaoClass {
 		int max = array[0];
 		int min = array[0];
 
-		// Find the maximim and minimum integers in the array.
 		for (int index = 0; index < array.length; index++) {
 			if (array[index] > max)
 				max = array[index];
@@ -254,7 +245,6 @@ public class OrdenacaoClass {
 
 		int[] buckets = new int[(max - min) + 1];
 
-		// Initialize each bucket with the values of the array.
 		for (int index = 0; index < array.length; index++) {
 			buckets[array[index] - min]++;
 			comparacoesBucketSort++;
@@ -274,7 +264,6 @@ public class OrdenacaoClass {
 				comparacoesBucketSort++;
 			}
 		}
-
 	}
 
 	public final void ordenacaoQuickSort(int[] arrayParam7) {
@@ -339,9 +328,6 @@ public class OrdenacaoClass {
 				indice++;
 				temp[i]--;
 			}
-
 		}
-
 	}
-
 }
